@@ -1,0 +1,103 @@
+@font-face {
+    font-family: R01;
+    src: url("../fonts/releway/static/Raleway-Medium.ttf");
+}
+@font-face {
+    font-family: R03;
+    src: url("../fonts/roboto/Roboto-05.ttf");
+}
+#container{
+    display: flex;
+    flex-direction: row;
+}
+#container-1{
+    width: 50%;
+}
+#container-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+}
+
+#container h1{
+    text-align: center;
+    padding: 2%;
+    margin-bottom: 15%;
+}
+.form-text{
+    text-align: center;
+    font-size: 16px;
+}
+form{
+    width:80%;
+    border-radius: 25px 7px 7px 27.5px;
+    padding: 4%;
+}
+form img{
+    width: 30%;
+    margin-left: 35%;
+    border-radius: 50px;
+    margin-bottom: 10%;
+    display: inline-block;
+}
+
+.form-control,.form-select::placeholder{
+    color: #5e5e5e;
+    font-family: sans-serif;
+}
+.form-control, .form-select{
+    background-color:#ECECEC;
+    color: rgb(199, 0, 0);
+    border: none;
+    border-radius: 50px;
+    font-family: R03;
+    font-weight: 100;
+    font-size: 1.2vw;
+    color: rgb(0, 0, 0);
+    padding: 3%;
+    padding-left: 5%;
+}
+.form-select{
+    color: #5e5e5e;
+    margin-bottom: 4%;
+}
+.form-control:focus{
+    background-color: #dad8d8;
+    box-shadow: none;
+}
+
+.btn{
+    margin-top: 5%;
+    background: linear-gradient(to left, #4776E6, #8e54e9);
+    border: 2px solid #ffffff;
+    color: white;
+    transition: 1s;
+    width: 100%;
+}
+.btn:hover{
+    background: linear-gradient(to left, #8e54e9, #4776E6);
+    border: 2px solid #ffffff; 
+}
+
+@media screen and (max-width:800px) {
+    #container{
+        flex-wrap: wrap;
+    }
+    #container-1{
+        width: 100%;
+        display: none;
+    }
+    form{
+        width: 100%;
+    }
+    .form-control{
+        font-size: 5vw;
+    }
+    form img{
+        margin-top: 25%;
+    }
+    .form-select{
+        font-size: 5vw;
+    }
+}
