@@ -1,0 +1,100 @@
+@font-face {
+    font-family: R01;
+    src: url("../fonts/releway/static/Raleway-Medium.ttf");
+}
+@font-face {
+    font-family: R03;
+    src: url("../fonts/roboto/Roboto-05.ttf");
+}
+#container{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*background: linear-gradient(45deg, #6921a8, #34009c);*/
+    background-image: url("../img/teste.png");
+    background-size: cover;
+    background-attachment: fixed;
+    border-radius: 0px 0px 400px 0px;
+}
+
+#container h1{
+    text-align: center;
+    padding: 2%;
+    margin-bottom: 15%;
+}
+.form-text{
+    text-align: center;
+    font-size: 16px;
+}
+form{
+    width: 30%;
+    background-color:#ffffff ;
+    box-shadow: 2px 2px 50px 2px rgba(31, 31, 31, 0.801);
+    border-radius: 25px 7px 7px 27.5px;
+    padding: 4%;
+}
+form img{
+    width: 30%;
+    margin-left: 35%;
+    border-radius: 50px;
+    margin-bottom: 10%;
+}
+.form-control::placeholder{
+    color: #AEB2BA;
+    font-family: sans-serif;
+}
+.form-control{
+    background-color: #4545e900;
+    color: rgb(58, 58, 58);
+    border: none;
+    border-bottom: 2.7px solid #AEB2BA;
+    border-radius: 1px;
+    font-family: R03;
+    font-weight: 100;
+    font-size: 1.4vw;
+    color: rgb(110, 110, 110);
+}
+
+.form-control:focus{
+    box-shadow: none;
+    border-bottom: 2.7px solid #FFBD59;
+}
+
+.btn{
+    margin-top: 20%;
+    background: linear-gradient(to left, #4776E6, #8e54e9);
+    border: 2px solid #ffffff;
+    color: white;
+    transition: 1s;
+    width: 100%;
+}
+.btn:hover{
+    background: linear-gradient(to left, #8e54e9, #4776E6);
+    border: 2px solid #ffffff; 
+}
+
+@media screen and (max-width:800px) {
+    #container{
+        border-radius: 0px 0px 150px 0px;
+    }
+    #container-1{
+        width: 100%;
+        display: none;
+    }
+    form{
+        width: 90%;
+        border-radius: 0;
+    }
+    .form-control{
+        font-size: 5vw;
+    }
+    form img{
+        margin-top: 25%;
+    }
+
+}
