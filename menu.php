@@ -1,3 +1,4 @@
+
  <!--barranav-->
  <nav>
         <i onclick="menu_mobile()" id="icon-burgue" class="fas fa-align-left"></i>
@@ -6,23 +7,22 @@
             <img class="logo" src="img/logo.png" alt="">
 
             <a href="index.php">
-                <li onclick="fecha()">Ínicio</li>
+                <li onclick="fecha()">Home</li>
             </a>
             <a  href="index.php?#cards">
-                <li onclick="fecha()">Serviços</li>
-            </a>
-            <a href="index.php?#planos">
-                <li onclick="fecha()">Planos</li>
+                <li onclick="fecha()">Services</li>
             </a>
             <a href="index.php?#qualidade">
                 <li onclick="fecha()">Skills</li>
-            </a>
-            
+            </a>  
             <a href="cadastro.php">
-                <li id="cadastre-se" onclick="fecha()">Cadastre-se</li>
+                <li id="cadastre-se" onclick="fecha()">Register</li>
             </a>
             <a href="login.php">
                 <li id="login" onclick="fecha()">Login</li>
+            </a>
+            <a href="cpu/logout.php">
+                <li id="sair" onclick="fecha()">Sair</li>
             </a>
             <a href="carrinho.php">
                 <li onclick="fecha()"><i class="fa fa-shopping-cart"></i><div id="car-count">1</div></li>
@@ -70,7 +70,9 @@
     font-family: RLW;
     src: url(fonts/releway/static/Raleway-Thin.ttf);
 }
-
+.disclaimer{
+    display: none;
+}
 /*MENU**/
 ul{ 
     background-color: rgba(114, 83, 185, 0);
@@ -129,10 +131,12 @@ li:hover{
 #car-count{
     background-color: red;
     text-align: center;
-    padding: 5px;
+    padding: 1%;
     margin-top: -2%;
-    margin-left: 2%;
     border-radius: 50px;
+    display: none;
+}
+#sair{
     display: none;
 }
 @media screen and (max-width:800px) {
@@ -198,3 +202,19 @@ li:hover{
     }
 }
     </style>
+
+<?php
+
+if(isset($_SESSION['email'])){
+    echo"<style>
+    #login{
+        display: none;
+    }
+    #cadastre-se{
+        display: none;
+    }
+    #sair{
+        display: block;
+</style>";
+}
+?>

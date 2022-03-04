@@ -1,5 +1,6 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
   <head>
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
@@ -9,7 +10,7 @@
     <!-- Bootstrap CSS --
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
 
-    <title>Página Inicial</title>
+    <title>Home</title>
   </head>
   <body>
     <!--barranav-->
@@ -18,25 +19,25 @@
     <!--capaprincipal-->
     <section id="inicio">
         <div id="textos">
-            <h1>Hospedagem para <br> <span>jogos</span></h1>
-            <h2>Inicie seu projeto com servidores e recursos otimizados para jogos  </h2>
+            <h1>Hosting for <br> <span>Games</span></h1>
+            <h2>Start your project with game - optimized servers and resources</h2>
         </div>
     </section>
 
  <!--Cards-->
  <section id="cards">
-     <div class="card" id="card-1"><img src="img/vps.png" alt=""><h3>Vps</h3></div>
-     <div class="card" id="card-2"><img src="img/fiveM.png" alt=""><h3>FiveM</h3></div>
-     <div class="card" id="card-3"><img src="img/rust.png" alt=""><h3>Rush</h3></div>
-     <div class="card" id="card-4"><img src="img/minecraft.png" alt=""><h3>Minecraft</h3></div>
+     <div class="card" id="card-1"><img src="img/vps.png" alt=""><h3>Vps</h3><a href="vps.php"><button>See plans</button></a></div>
+     <div class="card" id="card-2"><img src="img/fiveM.png" alt=""><h3>FiveM</h3><a href="fivem.php"><button>See plans</button></a></div>
+     <div class="card" id="card-3"><img src="img/rust.png" alt=""><h3>Rust</h3><a href="rust.php"><button>See plans</button></a></div>
+     <div class="card" id="card-4"><img src="img/minecraft.png" alt=""><h3>Minecraft</h3><a href="minecraft.php"><button>See plans</button></a></div>
  </section>
 
-<!--Planos-->
+<!--Planos--
 <section id="planos">
     <div class="plano" id="plano-1"><img src="img/vps.png" alt=""><h1><span> Vps Gamer</span></h1><h4>A partir de</h4><h1>R$100/mês</h1><a href="plano-1.php"><button>Ver planos</button></a></div>
     <div class="plano" id="plano-1"><img src="img/vps.png" alt=""><h1><span> Vps Gamer</span></h1><h4>A partir de</h4><h1>R$100/mês</h1><button>Ver planos</button></a></div>
     <div class="plano" id="plano-1"><img src="img/vps.png" alt=""><h1><span> Vps Gamer</span></h1><h4>A partir de</h4><h1>R$100/mês</h1><button>Ver planos</button></a></div>
-</section>
+</section>-->
 
 <!--qualidade-->
 <section id="qualidade">

@@ -6,6 +6,9 @@
     font-family: R03;
     src: url("../fonts/roboto/Roboto-05.ttf");
 }
+.disclaimer{
+    display: none;
+}
 #container{
     display: flex;
     flex-direction: row;
@@ -79,7 +82,34 @@ form img{
     background: linear-gradient(to left, #8e54e9, #4776E6);
     border: 2px solid #ffffff; 
 }
-
+#alerta{
+    position: fixed;
+    top: 2%;
+    right: 2%;
+    padding: 2%;
+    border-left: 3px solid #000020;
+    animation: ini 0.5s;
+    box-shadow: 0 0 1em rgba(41, 41, 41, 0.185);
+    display: none;
+}
+@keyframes ini {
+    0%{
+        top: -100%;
+    }
+    100%{
+        top: 2%;
+    }
+    
+}
+@keyframes exit {
+    0%{
+        top: 2%;
+    }
+    100%{
+        top: -100%;
+    }
+    
+}
 @media screen and (max-width:800px) {
     #container{
         flex-wrap: wrap;
@@ -99,5 +129,8 @@ form img{
     }
     .form-select{
         font-size: 5vw;
+    }
+    #alerta{
+        width: 80%;
     }
 }

@@ -15,6 +15,7 @@ if (screen.width > 800) {
         });
     });
 }
+
 //MENU
 if (screen.width < 800) {
     function menu_mobile() {

@@ -1,3 +1,10 @@
+<?php 
+ session_start();
+ 
+if(isset($_SESSION['email'])){
+    header('location:carrinho.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,67 +19,83 @@
 </head>
 
 <body>
+    <div id="alerta"></div>
+
     <section id="container">
         <div id="container-1">
             <div id="img"><img src="img/imgcadastro.png" alt=""></div>
         </div>
+
         <div id="container-2">
-            <form>
+            <form  >
                 <img src="img/logo.png" alt="">
                 <!-- <h1>Login</h1>--->
                 <div class="mb-3">
-                    <input type="email" placeholder="Digite seu nome completo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="name" required name="name" placeholder="Write your full name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                    <input type="number" placeholder="Digite seu telefone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="number" required name="phone" placeholder="Write your phone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
-                    <input type="email" placeholder="Digite seu email" class="form-control" id="exampleInputPassword1">
-                </div>
-               
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Selecione se estado:</option>
-                    <option value="1">De outro país</option>
-                    <option value="1">AC</option>
-                    <option value="2">AL</option>
-                    <option value="3">AP</option>
-                    <option value="3">AM</option>
-                    <option value="3">BA</option>
-                    <option value="3">CE</option>
-                    <option value="3">DF</option>
-                    <option value="3">ES</option>
-                    <option value="3">GO</option>
-                    <option value="3">MA</option>
-                    <option value="3">MT</option>
-                    <option value="3">MS</option>
-                    <option value="3">MG</option>
-                    <option value="3">PA</option>
-                    <option value="3">PB</option>
-                    <option value="3">PR</option>
-                    <option value="3">PE</option>
-                    <option value="3">PI</option>
-                    <option value="3">Rj</option>
-                    <option value="3">RN</option>
-                    <option value="3">RS</option>
-                    <option value="3">RO</option>
-                    <option value="3">RR</option>
-                    <option value="3">SC</option>
-                    <option value="3">SP</option>
-                    <option value="3">SE</option>
-                    <option value="3">TO</option>
-                </select>
-                <div class="mb-3">
-                    <input type="name" placeholder="Digite sua Cidade"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" required name="email" placeholder="Write your email" class="form-control" id="exampleInputPassword1">
                 </div>
                 <div class="mb-3">
-                    <input type="password" placeholder="Digite sua senha" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="text" required name="country" placeholder="Write your country" class="form-control" id="exampleInputPassword1">
                 </div>
-                
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <div id="emailHelp" class="form-text">Já possuí conta? <a href="login.php">Login</a></div>
+                <div class="mb-3">
+                    <input type="name" required name="city" placeholder="Write your city or province" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <input type="password" required name="passwordUser" placeholder="Write your password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                 <input class="btn btn-primary" type="submit" onclick="cadastrar(); return false;">            
+                <div id="emailHelp" class="form-text">Do you have an account <a href="login.php">Login</a></div>
             </form>
         </div>
     </section>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
+    <!--<script src="https://code.jquery.com/jquery-3.5.1.js"></script>-->
+<script>
+    function cadastrar(){
+
+         var namee = document.getElementsByName("name")[0].value;
+         var phonee = document.getElementsByName("phone")[0].value;
+         var emaill = document.getElementsByName("email")[0].value;
+         var countryy = document.getElementsByName("country")[0].value;
+         var cityy = document.getElementsByName("city")[0].value;
+         var passwordUserr = document.getElementsByName("passwordUser")[0].value;
+
+     $.ajax({
+         type: "POST",
+         url: "cpu/register.php",
+     data: { name: namee, phone:phonee, email:emaill, country:countryy, city:cityy, passwordUser:passwordUserr},
+         dataType: "text",
+         success: function (response) {
+
+            //EXIBINDO MENSAGENS DE ERRO
+             if(response.match("Name already registered")){
+                var alert = document.querySelector('#alerta'); alert.style.display='block'; alert.innerHTML=response; 
+                setTimeout(function(){
+                    alert.style.display='none';
+                },8000);
+             }else if(response.match("E-mail already registered")){
+                var alert = document.querySelector('#alerta'); alert.style.display='block'; alert.innerHTML=response; 
+                setTimeout(function(){
+                    alert.style.display='none';
+                },8000);
+             }else if(response.match("cadastrado")){
+                window.location.href = "carrinho.php";
+             }else if(response.match("Some field is empty")){
+                var alert = document.querySelector('#alerta'); alert.style.display='block'; alert.innerHTML=response; 
+                setTimeout(function(){
+                    alert.style.display='none';
+                },8000);
+             }
+         }
+         
+     });
+    }
+</script>
 </body>
 
 </html>

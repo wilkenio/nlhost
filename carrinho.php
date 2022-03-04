@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,17 +7,23 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/carrinho.css">
-	<title>Carrinho</title>
+	<title>Cart</title>
 </head>
 
 <body>
 	 <!--barranav-->
-     <?php include 'menu.php'; ?>
 
+     <?php include 'menu.php'; ?>
+     <?php 
+
+if(!isset($_SESSION['email'])){
+    header('location:cadastro.php');
+}
+?>
     <!--capaprincipal-->
     <section id="inicio">
         <div id="textos">
-            <h1>  <br> <span>Carrinho</span></h1>
+            <h1>  <br> <span>Cart</span></h1>
         </div>
     </section>
 
@@ -27,7 +34,11 @@
         <div id="descricao"></div>
       
     </div>
-    <div  id="produto"><h2>Total: $<span id="total"></span></h2></div>
+    <div  id="produto">
+        <div id="to"><h2>Total: €<span id="total"></span></h2></div>
+        <button id="end">Finalize purchase</button>
+    </div>
+
 </section>
 
 <script> 
@@ -37,7 +48,7 @@
 if(!nomeProduto == "" || null){
 	document.querySelector("#nomeproduto").innerHTML= nomeProduto /*`<div id="qtd">Quantidade: <input value="1"  type="number"></div>`*/
     document.querySelector("#descricao").innerHTML= descricao
-    document.querySelector("#valor").innerHTML= `<div id="qtd">Quantidade: <input value="1" id="qtdinpunt" oninput="total()"   type="number"></div>`/* + "Valor unitário"+ "R$: " +"<b>" + valorProduto +"</b>"*/
+    document.querySelector("#valor").innerHTML= `<div id="qtd">The amount: <input value="1" id="qtdinpunt" oninput="total()"   type="number"></div>`/* + "Valor unitário"+ "R$: " +"<b>" + valorProduto +"</b>"*/
 }else{
     document.querySelector("#nomeproduto").innerHTML= "Você não adicionou nenhum produto ao carrinho :/"
 }
@@ -50,6 +61,8 @@ if(!nomeProduto == "" || null){
 total();
 
 </script>
+<!--js (opcional)--->
+<script src="js/js_1.js"></script>
  <!--jquery-->
  <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
    <!--icones (fontawesome)-->
