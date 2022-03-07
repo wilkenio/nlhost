@@ -4,14 +4,19 @@ session_start();
 include 'conexao_db.php';
 
 //SELECT 
-$cmd  = $pdo->prepare("SELECT * FROM user_nlhost");
-$cmd->execute();
+$sql = "SELECT * FROM user_nlhost";
+$result = $conn->query($sql);
 
-while ($result = $cmd->fetch()) {
-    $nomeDb = $result['nome'];
-    $emailDb = $result['email'];
-    $senhaDb = $result['senha'];
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $emailDb = $row["email"];
+    $senhaDb = $row["senha"];
+  }
+} else {
+  echo "0 results";
 }
+
 if(isset($_POST['email'])){
 
     //var config

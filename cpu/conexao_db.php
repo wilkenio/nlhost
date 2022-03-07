@@ -1,20 +1,16 @@
 <?php 
 
 //config database
-$localhost = "localhost";
+$servername = "localhost";
 $user = "root";
-$pass = "lojavirtual!1";
-$banco = "nlhost_db";
+$password = "lojavirtual!1";
+$dbname = "nlhost_db";
 
-try{
-//conect database (PDO)
-$pdo = new PDO("mysql:dbname=".$banco."; host=".$localhost, $user, $pass);
-//$pdo ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}catch( PDOException $e){
-    echo"erro com o db". $e->getMessage();
-}catch( Exception $e){
-    echo"erro generico". $e->getMessage();
+// Create connection
+$conn = new mysqli($servername, $user, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
-
 
 ?>

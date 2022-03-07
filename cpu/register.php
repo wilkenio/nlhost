@@ -5,7 +5,7 @@ include 'conexao_db.php';
 
 //var config
 
-//$dateregister = date('d/m/Y');
+$dateregister = date('d/m/Y');
 
 if (isset($_POST['name'])) {
 
@@ -22,14 +22,19 @@ if (isset($_POST['name'])) {
      //verificando se os campos estão preenchidos
      if (!empty($name) and !empty($phone) and !empty($email) and !empty($country) and !empty($city) and !empty($password)) {
          
-          //SELECT 
-          $cmd  = $pdo->prepare("SELECT * FROM user_nlhost");
-          $cmd->execute();
-
-          while ($result = $cmd->fetch()) {
-               $nomeDb = $result['nome'];
-               $emailDb = $result['email'];
+          $sql = "SELECT nome, email FROM user_nlhost";
+          $result = $conn->query($sql);
+          
+          if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+              $dbname = $row["nome"];
+              $dbemail = $row["email"];
+            }
+          } else {
+            echo "0 results";
           }
+
 
           //verificando erros de igualdade nos dados
           if ($name == $nomeDb) {
@@ -39,8 +44,15 @@ if (isset($_POST['name'])) {
           } else {
                $_SESSION['email'] = $email;
                echo ("cadastrado");
-                $pdo->query("INSERT INTO user_nlhost (nome, email, senha, phone, country, city, registrationdate) VALUES ('$name', '$email', '$senha','$phone','$country', '$city','$dateregister') ");
-              
+               $sql ="INSERT INTO user_nlhost (nome, email, senha, phone, country, city, registrationdate) VALUES ('$name', '$email', '$senha','$phone','$country', '$city','$dateregister') ";
+
+               if ($conn->query($sql) === TRUE) {
+                 echo "New record created successfully";
+               } else {
+                 echo "Error: " . $sql . "<br>" . $conn->error;
+               }
+               
+               $conn->close();   
           }  
      }else{echo"Some field is empty";}
 }
