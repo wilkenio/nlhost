@@ -1,11 +1,12 @@
 # NL Host
-Sistema de um site que vende host.
+Sistema de um site que vende host, fui convidado por um amigo de fazer um site que apresentasse o produto(host), e que ao mesmo tempo tivesse login/cadastro, e um sistema de crrinho.
 <br>Link: https://nlhost7.000webhostapp.com/index.php
 <br><br>Funcionalidades:
 + Página inicial apresentando o produto
 + Páginas com planos e valores
 + Login/Cadastro
 + Carrinho de compras (Obs: possuí espaço para 1 produto)
++ Chat Oline
 
 
 ## Tecnologias utilizadas:
