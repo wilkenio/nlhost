@@ -24,7 +24,7 @@ Sistema de um site que vende host.
 
 ## Como executar o sistema:
 
-1) Tenha o xamp, wamp ou outro servidor instalado em sua máquina
+1) Tenha o xamp, wamp ou outro servidor
 2) Coloque todos os arquivos na pasta do seu servidor
 3) Importe o arquivo "nlhost_db.sql" para o seu banco de dados
 4) Se nessesario acesse o arquivo "conexao_db.php" e edite o que corresponder ao seu database
