@@ -6,6 +6,9 @@
     font-family: R03;
     src: url("../fonts/roboto/Roboto-05.ttf");
 }
+.disclaimer{
+    display: none;
+}
 #container{
     position: absolute;
     top: 0;
@@ -77,8 +80,40 @@ form img{
     background: linear-gradient(to left, #8e54e9, #4776E6);
     border: 2px solid #ffffff; 
 }
-
+#alerta{
+    position: fixed;
+    top: 2%;
+    right: 2%;
+    padding: 2%;
+    border-left: 3px solid #8459E8;
+    animation: ini 1s;
+    box-shadow: 0 0 1em rgba(41, 41, 41, 0.185);
+    display: none;
+    background-color: white;
+    z-index: 999;
+}
+@keyframes ini {
+    0%{
+        top: -100%;
+    }
+    100%{
+        top: 2%;
+    }
+    
+}
+@keyframes exit {
+    0%{
+        top: 2%;
+    }
+    100%{
+        top: -100%;
+    }
+    
+}
 @media screen and (max-width:800px) {
+    #alerta{
+        width: 80%;
+    }
     #container{
         border-radius: 0px 0px 150px 0px;
     }

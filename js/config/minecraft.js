@@ -58,10 +58,24 @@ atualizarcarrinho = () =>{
         if(val.quantidade > 0){
         document.querySelector("#carrinho").innerHTML+=val.nome + val.quantidade
 
-        window.localStorage.setItem("nomeProduto",val.nome)
-        window.localStorage.setItem("valorProduto",val.valor)
-        window.localStorage.setItem("descricao",val.descrição)
-        window.location.href = "carrinho.php";
+        var nameProduct = val.nome
+        var valueProduct = val.valor
+        var descriptionProduct = val.descrição
+
+    $.ajax({
+        type: "POST",
+        url: "cpu/atualizar_carrinho.php",
+    data: { nomeProduto: nameProduct, valorProduto:valueProduct, descricaoProduto:descriptionProduct},
+        dataType: "text",
+        success: function (response) {
+           //rederecionando pro carrinho
+           if(response.match("successfully")){
+            window.location.href = "carrinho.php";
+            
+           }
+        }
+        
+    });
         }
     })
 }

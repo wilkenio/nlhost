@@ -90,6 +90,11 @@ if(isset($_SESSION['email'])){
                 setTimeout(function(){
                     alert.style.display='none';
                 },8000);
+             }else{
+                var alert = document.querySelector('#alerta'); alert.style.display='block'; alert.innerHTML=response; 
+                setTimeout(function(){
+                    alert.style.display='none';
+                },8000);
              }
          }
          

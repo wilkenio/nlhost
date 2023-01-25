@@ -16,7 +16,7 @@
 <body>
     <!--barranav-->
      <?php include 'menu.php'; ?>
-
+     <div id="alerta"></div>
     <!--capaprincipal-->
     <section id="inicio">
         <div id="textos">

@@ -21,40 +21,34 @@ if (isset($_POST['name'])) {
      
      //verificando se os campos estão preenchidos
      if (!empty($name) and !empty($phone) and !empty($email) and !empty($country) and !empty($city) and !empty($password)) {
+      
+      $sql = "SELECT * FROM user_nlhost WHERE email='$email'";
+      $result = $conn->query($sql) or die ("falha na execuçao sql");
+      $quantidade= $result->num_rows;
+
+      if($quantidade > 0){
+        echo "E-mail already registered";
+      }else{
+        
+      
+        $sql ="INSERT INTO user_nlhost (nome, email, senha, phone, country, city, registrationdate, nomeProduto,valorProduto,descricaoProduto) VALUES ('$name', '$email', '$senha','$phone','$country', '$city','$dateregister', '','','' ) ";
+        if ($conn->query($sql) === TRUE) {
+          $_SESSION['email'] = $email;
+          $sql = "SELECT * FROM user_nlhost WHERE email='$email'";
+          $result = $conn->query($sql) or die ($conn->error);
+          $total = $result->fetch_assoc();
+          $_SESSION['id'] = $total['id'];
+
+          echo "cadastrado";
          
-          $sql = "SELECT nome, email FROM user_nlhost";
-          $result = $conn->query($sql);
-          
-          if ($result->num_rows > 0) {
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
-              $dbname = $row["nome"];
-              $dbemail = $row["email"];
-            }
-          } else {
-            echo "0 results";
-          }
-
-
-          //verificando erros de igualdade nos dados
-          if ($name == $nomeDb) {
-               echo ("Name already registered");
-          } elseif ($email == $emailDb) {
-               echo ("E-mail already registered");
-          } else {
-               $_SESSION['email'] = $email;
-               echo ("cadastrado");
-               $sql ="INSERT INTO user_nlhost (nome, email, senha, phone, country, city, registrationdate) VALUES ('$name', '$email', '$senha','$phone','$country', '$city','$dateregister') ";
-
-               if ($conn->query($sql) === TRUE) {
-                 echo "New record created successfully";
-               } else {
-                 echo "Error: " . $sql . "<br>" . $conn->error;
-               }
-               
-               $conn->close();   
-          }  
+        } else {
+          echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+        
+        $conn->close();   
+      }
+          } 
      }else{echo"Some field is empty";}
-}
+
 
 

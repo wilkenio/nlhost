@@ -32,9 +32,7 @@
     </nav>
 <script>
       var nomeProduto = window.localStorage.getItem("nomeProduto")
-    if(!nomeProduto == "" || null){
-        document.querySelector("#car-count").style.display="block"
-    }
+
 </script>
     <style>
         /***FONTS PERSONALIZADAS***/
@@ -215,6 +213,10 @@ if(isset($_SESSION['email'])){
     }
     #sair{
         display: block;
+    }
+    #car-count{
+        display:block;
+    }
 </style>";
 }
 ?>

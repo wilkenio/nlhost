@@ -11,15 +11,19 @@
 </head>
 
 <body>
-	 <!--barranav-->
-
-     <?php include 'menu.php'; ?>
-     <?php 
+<?php 
 
 if(!isset($_SESSION['email'])){
-    header('location:cadastro.php');
+    header('Location:cadastro.php');
 }
 ?>
+  <?php include 'menu.php'; include 'cpu/conexao_db.php';
+  
+  $id = $_SESSION['id'];
+  $sql = "SELECT * FROM user_nlhost WHERE id='$id'";
+  $result = $conn->query($sql) or die ($conn->error);
+
+  ?>
     <!--capaprincipal-->
     <section id="inicio">
         <div id="textos">
@@ -29,29 +33,20 @@ if(!isset($_SESSION['email'])){
 
 <section id="carrinho">
     <div id="produto">
-        <div id="nomeproduto"></div>
-        <div id="valor"></div>
-        <div id="descricao"></div>
-      
+        <?php while($dado = $result->fetch_array()) { ?>
+        <div id="nomeproduto"><?php echo $dado['nomeProduto']; ?></div>
+        <div id="valor">Quantidade:<input value="1" id="qtdinpunt" oninput="total()"   type="number"></div>
+        <div id="descricao"><?php echo $dado['descricaoProduto']; ?></div>
+
     </div>
     <div  id="produto">
-        <div id="to"><h2>Total: €<span id="total"></span></h2></div>
+        <div id="to"><h2>Total: €<span id="total"> <?php $valorProduto = $dado['valorProduto']; echo"<script>var valorProduto = $valorProduto</script> " ?></span></h2></div>   
         <button id="end">Finalize purchase</button>
     </div>
-
+    <?php } ?>
 </section>
 
 <script> 
-    var nomeProduto = window.localStorage.getItem("nomeProduto")
-    var valorProduto = window.localStorage.getItem("valorProduto")
-    var descricao = window.localStorage.getItem("descricao")
-if(!nomeProduto == "" || null){
-	document.querySelector("#nomeproduto").innerHTML= nomeProduto /*`<div id="qtd">Quantidade: <input value="1"  type="number"></div>`*/
-    document.querySelector("#descricao").innerHTML= descricao
-    document.querySelector("#valor").innerHTML= `<div id="qtd">The amount: <input value="1" id="qtdinpunt" oninput="total()"   type="number"></div>`/* + "Valor unitário"+ "R$: " +"<b>" + valorProduto +"</b>"*/
-}else{
-    document.querySelector("#nomeproduto").innerHTML= "Você não adicionou nenhum produto ao carrinho :/"
-}
     function total(){
         var qtd = document.querySelector("#qtdinpunt").value
         var total = valorProduto *qtd
