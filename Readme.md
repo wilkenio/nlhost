@@ -15,5 +15,5 @@
   </tr>
 </table>
 
-#### Link: https://nlhost7.000webhostapp.com/
+#### Link: https://wilkenio.tech/nlhost/
 
